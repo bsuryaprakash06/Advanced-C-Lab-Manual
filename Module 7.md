@@ -16,12 +16,29 @@ Else
  
 Program:
 
-//type your code here
 
+```c
+#include <stdio.h>
+int main() {
+    char filename[100];
+    FILE *file;
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Unable to open file %s\n", filename);
+    } else {
+        printf("File '%s' opened successfully!\n", filename);
+        fclose(file);
+        printf("File %s has been closed\n",filename);
+    }
+    return 0;
+}
+```
 
 Output:
+<img width="1315" height="516" alt="image" src="https://github.com/user-attachments/assets/dea1d429-bf8b-49ec-a06f-33cf29c64d17" />
 
-//paste your output here
 
 
 Result:
@@ -43,17 +60,34 @@ Algorithm:
 7.	Return 0
  
 Program:
+```c
+#include <stdio.h>
 
-//type your code here
+struct numbers {
+    int a;
+    int b;
+};
 
+int add(struct numbers n) {
+    return n.a + n.b;
+}
 
+int main() {
+    struct numbers n;
 
+    printf("Enter two numbers:\n");
+    scanf("%d %d", &n.a, &n.b);
+
+    int result = add(n);
+
+    printf("Sum: %d\n", result);
+
+    return 0;
+}
+```
 
 Output:
-
-
-//paste your output here
-
+<img width="465" height="529" alt="image" src="https://github.com/user-attachments/assets/36bc1b9f-7fd1-426e-a420-05e114995c87" />
 
 
 
@@ -86,15 +120,32 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
 
+```c
+#include <stdio.h>
+int main() {
+    char filename[100];
+    FILE *file;
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+    file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Unable to open file %s\n", filename);
+    } else {
+        printf("File '%s' opened successfully!\n", filename);
+        fclose(file);
+        printf("File %s has been closed\n",filename);
+    }
+    return 0;
+}
+```
 
 
 
 Output:
 
+<img width="736" height="304" alt="image" src="https://github.com/user-attachments/assets/17dde8c1-0ab9-4ecb-aa51-0d6f894686dd" />
 
-//paste your output here
 
 
 
@@ -132,18 +183,31 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
-
-//type your code here
-
-
-
+```c
+#include <stdio.h>
+int main() {
+    char filename[100];
+    FILE *file;
+    char text[200];
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+    printf("Enter the text to insert into the file: ");
+    getchar();
+    fgets(text, sizeof(text), stdin);
+    file = fopen(filename, "a");
+    if (file == NULL) {
+        printf("Unable to open file %s\n", filename);
+    } else {
+        fputs(text, file);
+        printf("Text inserted successfully into '%s'.\n", filename);
+        fclose(file);
+    }
+    return 0;
+}
+```
 
 Output:
-
-
-//paste your output here
-
-
+<img width="1067" height="385" alt="image" src="https://github.com/user-attachments/assets/20e6fa42-43aa-4f34-8027-5ac399a4a0fa" />
 
 
 
@@ -186,19 +250,52 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+```c
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct subject {
+    char name[50];
+    int marks;
+};
 
+int main() {
+    int n, i;
+    struct subject *s;
+
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    s = (struct subject *)malloc(n * sizeof(struct subject));
+
+    if (s == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("Enter name of subject %d: ", i + 1);
+        scanf("%s", s[i].name);
+        printf("Enter marks for subject %d: ", i + 1);
+        scanf("%d", &s[i].marks);
+    }
+
+    printf("\nSubject Details:\n");
+    for (i = 0; i < n; i++) {
+        printf("Subject %d - Name: %s, Marks: %d\n", i + 1, s[i].name, s[i].marks);
+    }
+
+    free(s);
+    
+    return 0;
+}
+
+```
 
 
 
 Output:
-
-
-//paste your output here
-
-
-
+<img width="762" height="399" alt="image" src="https://github.com/user-attachments/assets/9dae56bf-b451-4e61-8903-31c4ac8c7e9c" />
 
 
 
