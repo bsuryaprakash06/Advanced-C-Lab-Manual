@@ -10,7 +10,7 @@ Algorithm:
  
 Program:
 
-```z
+```c
 struct Node{
     int data; 
     struct Node *next;
